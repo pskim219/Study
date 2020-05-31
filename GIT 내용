@@ -1,0 +1,195 @@
+git clone https://github.com/git/git
+
+
+highlight ColorColumn ctermbg=7
+
+
+
+git config --global user.name "pskim711"
+git config --global user.email pskim219@yahoo.com
+
+=====================================================
+1. installation
+	sudo yum install git-all
+	yum install autoconf cpio curl-devel expat-devel gcc gettext-devel make openssl-devel perl-ExtUtils-MakeMaker zlib-devel
+	
+cd ~/Downloads
+su
+yum install autoconf cpio curl-devel expat-devel gcc gettext-devel make openssl-devel perl-ExtUtils-MakeMaker zlib-devel
+wget -O v2.13.0.tar.gz https://github.com/git/git/archive/v2.13.0.tar.gz
+tar -xzvf ./v2.13.0.tar.gz
+cd git-2.13.0/
+make configure
+./configure --prefix=/usr/local/git
+make && make install
+ln -sv /usr/local/git/bin/* /usr/bin/
+exit
+
+2. git --version
+
+3. config file
+/etc/gitconfig file: Contains values applied to every user on the system and all their repositories. If you pass the option --system to git config, it reads and writes from this file specifically. (Because this is a system configuration file, you would need administrative or superuser privilege to make changes to it.)
+
+~/.gitconfig or ~/.config/git/config file: Values specific personally to you, the user. You can make Git read and write to this file specifically by passing the --global option, and this affects all of the repositories you work with on your system.
+
+config file in the Git directory (that is, .git/config) of whatever repository you’re currently using: Specific to that single repository. You can force Git to read from and write to this file with the --local option, but that is in fact the default. (Unsurprisingly, you need to be located somewhere in a Git repository for this option to work properly.)
+
+4. identity
+git config --global user.name "pskim711"
+git config --global user.email pskim219@yahoo.com
+
+5. Editor
+git config --global core.editor vim
+
+6. check my setting
+git config --list
+
+7. git help "verb"
+	git help config
+	
+=======================
+Start using GIT
+=======================
+
+1. mkdir local directory
+2. run "git init"
+3. start version controlling 
+$ git add *.c
+$ git add LICENSE
+$ git commit -m 'initial project version'
+
+Cloning 
+https://github.com/pskim219/test-network-automation
+
+
+git status
+
+============================================================
+ Create a New repository on the command line 
+============================================================
+echo "# demopygit" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/pskim219/Q200.git
+git push -u origin master
+
+============================================================
+ or push an existing repository from the command line 
+============================================================
+git remote add origin https://github.com/pskim219/Q200.git
+
+
+============================================================
+ or import code from another repository
+============================================================
+ You can initialize this repository with code from a Subversion, Mercurial, or TFS project
+ 
+
+============================================================
+ Git 기본 명령어
+============================================================
+git init					# 저장소 생성 
+# Create new file
+git add <filename>			# 새로 만든 파일을 저장소 파일 추가
+git commit					# 저장소에 변경 내용의 반영
+git commit -m "new file" 	# 커밎할때 메시지까지 추가
+git status					# 저장소의 상태 확인
+
+notepad hello.html 			# 생긴 파일을 변경한다.
+git status 					# git의 상태 표시, modified라고 나옴 - 빨간색.
+git add hello.html			# 고친 파일 추가
+git sttaus 					# modified라고 나오지만 초록색으로 나옴.
+git commit -m "바뀐내용"		
+git status 					# 고친 파일 안보임
+
+git log 					# 추가된 내용을 볼수 있음.
+
+# rollback 도 가능함
+
+============================================================
+ Git Branch
+============================================================
+git branch					# display branch information. * 는 선택.
+
+git branch test1			# test1 이라는 branch를 만듬.
+git branch					# 여기서는 branch 두개를 (master, test1) 보여줌. 사용중인 branch에 * 가 붙어있음.
+git checkout test1			# 여기서 test1 branch로 옴김.switched to branch 'test1"
+
+git branch					# 여기서는 test1에 별표가 붙어있음
+#수정하고, add하고 commit한다
+git checkout master  		# master branch로 돌아감
+# 파일내용를 봄.  내용이 안바뀜
+
+# 병합, merge 한다.
+# master branch 에서 병합을 한다.
+@master branch
+
+git merge test1 			# test1 branch와 병합을 한다.
+# 파일을 보면 test1에서 바꾼 내용이 master branch의 파일에도 바꿔서 보임
+
+# git branch 삭제
+git branch -d test1
+
+git branch 					# to display what branch available
+
+git log
+gitk 						# log를 UI로 보여준다
+
+
+
+
+============================================================
+ 원격 저장소 생성 (github) 
+============================================================
+# https://github.com/KoreaEva
+
+# Clone the file from github.com
+git clone https://github.com/KoreaEva/GitTest.git
+
+# modify README.md file
+notepad README.md
+
+git status					# check the status of the git, should see modified
+
+
+notepad hello.md			# create new file
+git status					# shoud show modified & new file
+
+git add *					# add more than 1 file
+
+git status					# after git add * those two files should change to Green
+
+git commit -m "헬로우 html파일이 추가됨"	# local에서만 commit됨, Github에까지는 반영이 안됨
+
+git push 					# github으로 push 함
+
+
+============================================================
+ 원격 저장소와 PR (Pull Request)
+============================================================
+
+Clone	remote repository 의 내용을 복제한다
+Push	remote repository 로 보낸다
+Pull	remote repository 에 있는 내용을 가져온다
+Fetch	remote repository 에서 변경 내용을 가져오기. # 변경내용만.
+
+Fork	다른 사람의 repository의 내용을 꼭 찍어서 가져온다.
+	clone	클론해서 수정하고, commit하고, push한다.
+Pull Request	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
